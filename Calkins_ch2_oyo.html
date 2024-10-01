@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--I used a boiler plate comand to make half the meta tags tbh, but it basically tells the website what to render it as-->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Daily Satire</title>
+    <link rel="stylesheet" href="styles/global.css"/>
+    <link rel="stylesheet" href="styles/navbar.css"/>
+    <link rel="stylesheet" href="styles/content.css"/>
+    <script src="scripts/search.js" defer></script>
+    <!-- Author: Alexander Calkins, Date: 2024-26-9 -->
+
+    <!--Also unless you ask me to I will not explain the CSS, given the nature of CSS its pretty readable...
+        but it basically makes the webpage look pretty (even though it doesn't, this is why I dont do graphic desgin)-->
+
+    <!--The image was generated using Gemini, an AI-based image generator from Google, 2024-->
+</head>
+<body>
+<header>
+    <!--This is my navbar it is in every single file it holds a unordered list of different pages as well as logo-->
+    <nav class="navbar">
+        <!--I Made the image its own div for flexbox stuff, I should probably go back and remove a lot of these divs-->
+        <div class="logo-container">
+            <img src="images/logo.png" class="logo" alt="Site Logo"/>
+        </div>
+        <!--I made this an ordered list because it is the list of links related to page in importance order-->
+        <ol class="nav-links">
+            <li><a href="Calkins_ch2_oyo.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ol>
+    </nav>
+</header>
+<main>
+    <!--Normally I'd use divs thoughou the whole page but thought I'd mess around with sections -->
+    <section class="hero">
+        <!--I made this an ordered list because it is techinally two seperate points: "welceome", and "why" but their order doesnt matter-->
+        <ul>
+            <li><h1>Welcome to The Daily Satire</h1></li>
+            <li><p>Your trusted source for unreliable information!</p></li>
+        </ul>
+    </section>
+
+    <!--This is the real meat of the front page this overarching section holds the news header, search bar, and the articles themselves-->
+    <section class="news-section" id="news">
+        <h2>Latest News</h2>
+        <div class="search-bar">
+            <!--This script listens for the page to fully load and then displays all articles in the "news-list" by adding the 'visible'
+            class and setting their display to "block" (was normally display:none). The searchArticles() function filters articles based on the user's input in a
+            search bar by comparing each article's title (using a data attribute) to the search term; matching articles are displayed, while non-matching articles are
+            gradually hidden. The clearSearch() function clears the search bar and re-runs the search to restore all articles. This ensures a responsive and dynamic
+            search experience for a list of articles.
+        
+            Although after asking chat gpt what time complexity this script is it spat out that it is somthing like O(n*m) which is pretty bad
+            but at least it is still constant time (kinda)-->
+            <input class="search-bar-input" type="text" id="search-bar" placeholder="Search articles..." onkeyup="searchArticles()"/>
+            <button class="tooltip" id="clear-btn" onclick="clearSearch()">✖ <span class="tooltiptext">Clear Search Result</span></button>
+        </div>
+
+        <!--Horizontal linebreak because we need one-->
+        <hr>
+
+        <!--This is the actual div that holds the individual articles and stuff-->
+        <div class="news-list" id="news-list">
+            <!--Each news article is an article... because according to w3 schools: "The <article> tag specifies independent, self-contained content.
+            An article should make sense on its own and it should be possible to distribute it independently from the rest of the site." 
+            And techincally each of these articles is it's webpage... but not really next comment will explain-->
+
+            <!--I spent waaaaayyyy too long trying to get this to work, what I did intially is make a page for each new entry, which was easy but felt like 
+            that would massively inflate file size comapred to a JSON. So I tried to dynamically parse a JSON file based off the url paramters and that 
+            did not work. I don't know why but the JSON kept throwing errors so I gave up and just embedded the JSON directly into the JS. I assume that is 
+            bad practice because you are supposed to sepreate data layers but I do not care at this point.
+            
+            
+            (https://www.botify.com/insight/what-are-url-parameters#:~:text=Parameters%20are%20added%20to%20the,often%20used%20for%20traffic%20tracking.)
+            (https://www.semrush.com/blog/url-parameters/)
+            (https://www.sitepoint.com/get-url-parameters-with-javascript/)
+            (Chat GPT, to help prototype)-->
+            <article data-title="Breaking: Cats Take Over City Hall">
+                <img src="images/catsMayor.jpg" alt="News 1"/>
+                <h3><a href="news.html?id=1">Breaking: Cats Take Over City Hall</a></h3>
+                <p>Read about how cats have decided it’s their turn to rule...</p>
+            </article>
+            <article data-title="Pigeons Awarded for Best Urban Art">
+                <img src="images/pigeonArt.jpg" alt="News 2"/>
+                <h3><a href="news.html?id=2">Pigeons Awarded for Best Urban Art</a></h3>
+                <p>The local pigeon community finally gets recognition...</p>
+            </article>
+            <article data-title="Italy Declares War on Costa Rica for Pizza 'Offense'">
+                <img src="images/pizzaWar.jpg" alt="News 3"/>
+                <h3><a href="news.html?id=3">Italy Declares War on Costa Rica for Pizza 'Offense'</a></h3>
+                <p>Read about this shocking international incident involving pineapple pizzas...</p>
+            </article>
+            <article data-title="World Leaders Join TikTok Dance Challenge to Save the Economy">
+                <img src="images/tiktok.jpg" alt="News 4"/>
+                <h3><a href="news.html?id=4">World Leaders Join TikTok Dance Challenge to Save the Economy</a></h3>
+                <p>World leaders are boogying to boost the economy—find out more...</p>
+            </article>
+            <article data-title="UN Recommends Meditation Breaks to Solve Global Conflicts">
+                <img src="images/unMeditate.jpg" alt="News 5"/>
+                <h3><a href="news.html?id=5">UN Recommends Meditation Breaks to Solve Global Conflicts</a></h3>
+                <p>Will meditation bring world peace? See what experts think...</p>
+            </article>
+            <article data-title="BRICS Launches New Cryptocurrency Backed by Gold... and Humor">
+                <img src="images/bitcoin.jpg" alt="News 6"/>
+                <h3><a href="news.html?id=6">BRICS Launches New Cryptocurrency Backed by Gold... and Humor</a></h3>
+                <p>BRICS nations combine gold with humor to challenge the US dollar...</p>
+            </article>
+            <article data-title="World Governments Introduce 'Procrastination Tax' to Combat Productivity Crisis">
+                <img src="images/unTime.jpg" alt="News 7"/>
+                <h3><a href="news.html?id=7">World Governments Introduce 'Procrastination Tax' to Combat Productivity Crisis</a></h3>
+                <p>A new tax to fight procrastination—learn how it might affect you...</p>
+            </article>
+            <article data-title="Scientists Recommend National Siesta Time to Boost Mental Health">
+                <img src="images/un1.jpg" alt="News 8"/>
+                <h3><a href="news.html?id=8">Scientists Recommend National Siesta Time to Boost Mental Health</a></h3>
+                <p>Could a national nap time solve our stress problems?</p>
+            </article>
+            <article data-title="UN Declares Mandatory 'Casual Friday' for Diplomats to Improve Relations">
+                <img src="images/un2.jpg" alt="News 9"/>
+                <h3><a href="news.html?id=9">UN Declares Mandatory 'Casual Friday' for Diplomats to Improve Relations</a></h3>
+                <p>Diplomats in casual clothes—will it improve international relations?</p>
+            </article>
+            <article data-title="Scientists Confirm: Bees Now Have Union, Demand Paid Pollen Leave">
+                <img src="images/un3.jpg" alt="News 10"/>
+                <h3><a href="news.html?id=10">Scientists Confirm: Bees Now Have Union, Demand Paid Pollen Leave</a></h3>
+                <p>Bees are unionizing for better working conditions—read more here...</p>
+            </article>
+            <article data-title="Kamala Harris Appointed 'Czar of Chill' to Promote Relaxation in Stressful Times">
+                <img src="images/chill.jpg" alt="News 11"/>
+                <h3><a href="news.html?id=11">Kamala Harris Appointed 'Czar of Chill' to Promote Relaxation in Stressful Times</a></h3>
+                <p>Kamala Harris leads a new initiative to encourage relaxation...</p>
+            </article>
+            <article data-title="Trump Turns Assassination Attempt Into Reality TV Sensation">
+                <img src="images/trump.webp" alt="News 12"/>
+                <h3><a href="news.html?id=12">Trump Turns Assassination Attempt Into Reality TV Sensation</a></h3>
+                <p>How did Trump turn an assassination attempt into entertainment? Find out...</p>
+            </article>
+            <article data-title="Elon Musk Announces Plan to Colonize the Moon Using Only Leftover Twitter Employees">
+                <img src="images/marsColony.jpg" alt="News 13"/>
+                <h3><a href="news.html?id=13">Elon Musk Announces Plan to Colonize the Moon Using Only Leftover Twitter Employees</a></h3>
+                <p>Former Twitter employees may be heading to the Moon...</p>
+            </article>
+            <article data-title="World Health Organization Declares 'Chronically Online' a Public Health Crisis">
+                <img src="images/chronicOnline.jpg" alt="News 14"/>
+                <h3><a href="news.html?id=14">World Health Organization Declares 'Chronically Online' a Public Health Crisis</a></h3>
+                <p>Can we get people to log off for good? Read about the WHO's latest initiative...</p>
+            </article>
+            <article data-title="Climate Summit Ends in Compromise: World Leaders Agree to 'Pretend to Care'">
+                <img src="images/un3.jpg" alt="News 15"/>
+                <h3><a href="news.html?id=15">Climate Summit Ends in Compromise: World Leaders Agree to 'Pretend to Care'</a></h3>
+                <p>World leaders promise to 'pretend to care' about climate change...</p>
+            </article>
+        </div>             
+    </section>
+</main>
+<!--This is a footer (beacuse it is at the bottom of the website.... where the footer typically is) with a fake copyright because idk-->
+<footer>
+    <p>© 2024 The Daily Satire. All rights NOT reserved.</p>
+</footer>
+</body>
+</html>

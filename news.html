@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--I used a boiler plate comand to make half the meta tags tbh, but it basically tells the website what to render it as-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--I know you can change the title with js but I already spent too long on this-->
+    <title>The Daily Satire - News Article</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/content.css">
+    <link rel="stylesheet" href="styles/news.css">
+    <script src="scripts/news.js" defer></script>
+</head>
+
+<body>
+<header>
+    <!--This is my navbar it is in every single file it holds a unordered list of different pages as well as logo-->
+    <nav class="navbar">
+        <!--I Made the image its own div for flexbox stuff, I should probably go back and remove a lot of these divs-->
+        <div class="logo-container">
+            <img src="images/logo.png" class="logo" alt="Site Logo"/>
+        </div>
+        <!--I used css to make this list obsolete anyways, but good to define in html so it cna be better translated to xhtml-->
+        <ul class="nav-links">
+            <li><a href="Calkins_ch2_oyo.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!--The main content is empty because the news.js does the hard work as it dynamcally fills out the content depending on-->
+    <section class="news-article main-content">
+        <h1 id="news-title">Loading...</h1>
+        <img id="news-image" src="" alt="News Image" class="news-image" style="display: none;">
+        <p id="news-content">Please wait while we load the article content...</p>
+    </section>
+</main>
+
+<!--This is a footer (beacuse it is at the bottom of the website.... where the footer typically is) with a fake copyright because idk-->
+<footer>
+    <p>&copy; 2024 The Daily Satire. All rights reserved.</p>
+</footer>
+</body>
+</html>

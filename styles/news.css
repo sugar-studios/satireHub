@@ -1,0 +1,28 @@
+#news-content {
+    font-family: "Comic Sans MS", "Comic Sans", cursive; /* https://stackoverflow.com/questions/21334839/applying-comic-sans-ms-font-style */
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /*https://developer.mozilla.org/en-US/docs/Web/CSS/clamp*/
+    line-height: 2;
+    transition: all;
+}
+
+body {
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 75%;
+}
+
+.news-article {
+    background-color: #dcdcdcf1;
+    padding: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 25px;
+}
+.news-image {
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+}
